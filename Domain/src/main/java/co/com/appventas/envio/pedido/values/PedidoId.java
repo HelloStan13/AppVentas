@@ -1,4 +1,6 @@
-package co.com.appventas.envio.pedido;
+package co.com.appventas.envio.pedido.values;
 
-public class PedidoId extends Identi{
+import co.com.sofka.domain.generic.Identity;
+
+public class PedidoId extends Identity {
 }
