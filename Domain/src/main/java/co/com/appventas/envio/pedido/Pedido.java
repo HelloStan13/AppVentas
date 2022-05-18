@@ -44,12 +44,12 @@ public class Pedido extends AggregateEvent<PedidoId> {
         appendChange(new RepartidorCreado(repartidorId,datosPersonales)).apply();
     }
 
-    public void cambiarEntregadoDeEstado(Entregado entregado){
-        appendChange(new EntregadoCambiado(entregado)).apply();
+    public void cambiarEntregadoDeEstado(EstadoId estadoId, Entregado entregado){
+        appendChange(new EntregadoCambiado(estadoId,entregado)).apply();
     }
 
-    public void actualizarDatosPersonalesDeRepartidor(DatosPersonales datosPersonales){
-        appendChange(new DatosPersonalesActualizados(datosPersonales)).apply();
+    public void actualizarDatosPersonalesDeRepartidor(RepartidorId repartidorId, DatosPersonales datosPersonales){
+        appendChange(new DatosPersonalesActualizados(repartidorId,datosPersonales)).apply();
     }
 
     public Aislamiento aislamiento(){

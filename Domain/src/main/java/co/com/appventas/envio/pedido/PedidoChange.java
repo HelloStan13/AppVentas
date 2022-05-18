@@ -1,8 +1,6 @@
 package co.com.appventas.envio.pedido;
 
-import co.com.appventas.envio.pedido.events.EstadoCreado;
-import co.com.appventas.envio.pedido.events.PedidoCreado;
-import co.com.appventas.envio.pedido.events.RepartidorCreado;
+import co.com.appventas.envio.pedido.events.*;
 import co.com.sofka.domain.generic.EventChange;
 
 public class PedidoChange extends EventChange {
@@ -17,6 +15,14 @@ public class PedidoChange extends EventChange {
 
         apply((RepartidorCreado event)-> {
             pedido.repartidor = new Repartidor(event.getRepartidorId(), event.getDatosPersonales());
+        });
+
+        apply((EntregadoCambiado event)-> {
+            pedido.cambiarEntregadoDeEstado(event.getEstadoId(), event.getEntregado());
+        });
+
+        apply((DatosPersonalesActualizados event)->{
+            pedido.actualizarDatosPersonalesDeRepartidor(event.getRepartidorId(), event.getDatosPersonales());
         });
     }
 }
