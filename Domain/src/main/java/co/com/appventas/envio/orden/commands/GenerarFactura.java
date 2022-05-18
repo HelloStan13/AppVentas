@@ -1,17 +1,16 @@
-package co.com.appventas.envio.orden.events;
+package co.com.appventas.envio.orden.commands;
 
 import co.com.appventas.envio.orden.values.*;
-import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.generic.Command;
 
-public class FacturaCreada extends DomainEvent {
+public class GenerarFactura extends Command {
     private final FacturaId facturaId;
     private final NombreCliente nombreCliente;
     private final FechaFactura fechaFactura;
-    private final  Direccion direccion;
+    private final Direccion direccion;
     private final PrecioFactura precioFactura;
 
-    public FacturaCreada(FacturaId facturaId, NombreCliente nombreCliente, FechaFactura fechaFactura, Direccion direccion, PrecioFactura precioFactura) {
-        super("co.com.appventas.envio.FacturaCreada");
+    public GenerarFactura(FacturaId facturaId, NombreCliente nombreCliente, FechaFactura fechaFactura, Direccion direccion, PrecioFactura precioFactura) {
         this.facturaId = facturaId;
         this.nombreCliente = nombreCliente;
         this.fechaFactura = fechaFactura;
