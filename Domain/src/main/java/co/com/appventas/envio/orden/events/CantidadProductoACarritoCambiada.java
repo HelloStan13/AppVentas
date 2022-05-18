@@ -1,4 +1,4 @@
-package co.com.appventas.envio.orden;
+package co.com.appventas.envio.orden.events;
 
 import co.com.appventas.envio.orden.values.Cantidad;
 import co.com.appventas.envio.orden.values.CarritoId;
