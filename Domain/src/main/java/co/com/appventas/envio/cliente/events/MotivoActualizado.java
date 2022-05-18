@@ -6,8 +6,8 @@ import co.com.appventas.envio.cliente.values.Motivo;
 import co.com.sofka.domain.generic.DomainEvent;
 
 public class MotivoActualizado extends DomainEvent {
-    private DevolucionId devolucionId;
-    private Motivo motivo;
+    private final DevolucionId devolucionId;
+    private final Motivo motivo;
 
     public MotivoActualizado(DevolucionId devolucionId, Motivo motivo) {
         super("co.com.appventas.envio.MotivoActualizado");

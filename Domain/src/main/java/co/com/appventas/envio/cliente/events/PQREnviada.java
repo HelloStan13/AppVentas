@@ -6,8 +6,8 @@ import co.com.appventas.envio.cliente.values.PQR;
 import co.com.sofka.domain.generic.DomainEvent;
 
 public class PQREnviada extends DomainEvent {
-    private ContactoId contactoId;
-    private PQR pqr;
+    private final ContactoId contactoId;
+    private final PQR pqr;
 
     public PQREnviada(ContactoId contactoId, PQR pqr) {
         super( "co.com.appventas.envio.PQREnviada");
