@@ -45,10 +45,14 @@ public class Pedido extends AggregateEvent<PedidoId> {
     }
 
     public void cambiarEntregadoDeEstado(EstadoId estadoId, Entregado entregado){
+        Objects.requireNonNull(estadoId);
+        Objects.requireNonNull(entregado);
         appendChange(new EntregadoCambiado(estadoId,entregado)).apply();
     }
 
     public void actualizarDatosPersonalesDeRepartidor(RepartidorId repartidorId, DatosPersonales datosPersonales){
+        Objects.requireNonNull(repartidorId);
+        Objects.requireNonNull(datosPersonales);
         appendChange(new DatosPersonalesActualizados(repartidorId,datosPersonales)).apply();
     }
 
