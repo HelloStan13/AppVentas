@@ -5,8 +5,8 @@ import co.com.appventas.envio.orden.values.OrdenId;
 import co.com.sofka.domain.generic.DomainEvent;
 
 public class CarritoHabilitado extends DomainEvent {
-    private OrdenId ordenId;
-    private CarritoId carritoId;
+    private final OrdenId ordenId;
+    private final CarritoId carritoId;
 
     public CarritoHabilitado(OrdenId ordenId, CarritoId carritoId) {
         super("co.com.appventas.envio.CarritoHabilitado");
