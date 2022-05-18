@@ -26,4 +26,10 @@ public class Pedido extends AggregateEvent<PedidoId> {
         Objects.requireNonNull(entregado);
         appendChange(new EstadoCreado(pedidoId,tiempoDeEntrega,entregado)).apply();
     }
+
+    public void agregarRepartidor(PedidoId pedidoId, DatosPersonales datosPersonales){
+        Objects.requireNonNull(pedidoId);
+        Objects.requireNonNull(datosPersonales);
+        appendChange(new RepartidorCreado(pedidoId,datosPersonales)).apply();
+    }
 }
