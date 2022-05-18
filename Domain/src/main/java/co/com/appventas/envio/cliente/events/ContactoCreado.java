@@ -1,7 +1,7 @@
 package co.com.appventas.envio.cliente.events;
 
-import co.com.appventas.envio.cliente.PQR;
-import co.com.appventas.envio.cliente.Whatsapp;
+import co.com.appventas.envio.cliente.values.PQR;
+import co.com.appventas.envio.cliente.values.Whatsapp;
 import co.com.appventas.envio.cliente.values.ContactoId;
 import co.com.sofka.domain.generic.DomainEvent;
 
