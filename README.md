@@ -7,6 +7,8 @@ Repositorio Front
 https://github.com/HelloStan13/AppVentas.git
 
 ```
+## Diagramas y modelo
+[Enlace --> Diagrama y Modelo AppVentas](https://drive.google.com/file/d/1LhC6D_JpgNWd8JWOcarG9ykKN04i697Z/view?usp=sharing)
 
 ## Construido con 🛠️
 
