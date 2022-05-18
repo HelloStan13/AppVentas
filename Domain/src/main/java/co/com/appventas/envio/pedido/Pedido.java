@@ -1,35 +1,68 @@
 package co.com.appventas.envio.pedido;
 
-import co.com.appventas.envio.pedido.events.EstadoCreado;
-import co.com.appventas.envio.pedido.events.PedidoCreado;
-import co.com.appventas.envio.pedido.values.Aislamiento;
-import co.com.appventas.envio.pedido.values.Entregado;
-import co.com.appventas.envio.pedido.values.PedidoId;
-import co.com.appventas.envio.pedido.values.TiempoDeEntrega;
+import co.com.appventas.envio.pedido.events.*;
+import co.com.appventas.envio.pedido.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 public class Pedido extends AggregateEvent<PedidoId> {
-    protected Estado estadoId;
-    protected Repartidor repartidorId;
+    protected Estado estado;
+    protected Repartidor repartidor;
     protected Aislamiento aislamiento;
 
-    public Pedido(PedidoId pedidoId, Estado estadoId, Repartidor repartidorId, Aislamiento aislamiento) {
+    public Pedido(PedidoId pedidoId, Aislamiento aislamiento) {
         super(pedidoId);
-        appendChange(new PedidoCreado(estadoId,repartidorId,aislamiento)).apply();
+        appendChange(new PedidoCreado(aislamiento)).apply();
     }
 
-    public void agregarEstado(PedidoId pedidoId, TiempoDeEntrega tiempoDeEntrega, Entregado entregado){
-        Objects.requireNonNull(pedidoId);
+    private Pedido(PedidoId pedidoId){
+        super(pedidoId);
+        subscribe(new PedidoChange(this));
+    }
+
+    public static Pedido from(PedidoId pedidoId, List<DomainEvent> events){
+        var pedido = new Pedido(pedidoId);
+        events.forEach(pedido::applyEvent);
+        return pedido;
+    }
+
+    public void agregarEstado(EstadoId estadoId,TiempoDeEntrega tiempoDeEntrega, Entregado entregado){
+        Objects.requireNonNull(estadoId);
         Objects.requireNonNull(tiempoDeEntrega);
         Objects.requireNonNull(entregado);
-        appendChange(new EstadoCreado(pedidoId,tiempoDeEntrega,entregado)).apply();
+        appendChange(new EstadoCreado(estadoId,tiempoDeEntrega,entregado)).apply();
     }
 
-    public void agregarRepartidor(PedidoId pedidoId, DatosPersonales datosPersonales){
-        Objects.requireNonNull(pedidoId);
+    public void agregarRepartidor(RepartidorId repartidorId, DatosPersonales datosPersonales){
+        Objects.requireNonNull(repartidorId);
         Objects.requireNonNull(datosPersonales);
-        appendChange(new RepartidorCreado(pedidoId,datosPersonales)).apply();
+        appendChange(new RepartidorCreado(repartidorId,datosPersonales)).apply();
     }
+
+    public void cambiarEntregadoDeEstado(Entregado entregado){
+        appendChange(new EntregadoCambiado(entregado)).apply();
+    }
+
+    public void actualizarDatosPersonalesDeRepartidor(DatosPersonales datosPersonales){
+        appendChange(new DatosPersonalesActualizados(datosPersonales)).apply();
+    }
+
+    public Aislamiento aislamiento(){
+        return aislamiento;
+    }
+
+    public Estado estado(){
+        return estado;
+    }
+
+    public Repartidor repartidor(){
+        return repartidor;
+    }
+
+
 }

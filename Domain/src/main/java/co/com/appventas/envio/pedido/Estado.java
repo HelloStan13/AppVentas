@@ -11,8 +11,8 @@ public class Estado extends Entity<EstadoId> {
     private TiempoDeEntrega tiempoDeEntrega;
     private Entregado entregado;
 
-    public Estado(EstadoId entityId, TiempoDeEntrega tiempoDeEntrega, Entregado entregado) {
-        super(entityId);
+    public Estado(EstadoId estadoId, TiempoDeEntrega tiempoDeEntrega, Entregado entregado) {
+        super(estadoId);
         this.tiempoDeEntrega = tiempoDeEntrega;
         this.entregado = entregado;
     }

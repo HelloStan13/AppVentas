@@ -1,5 +1,6 @@
 package co.com.appventas.envio.pedido;
 
+import co.com.appventas.envio.pedido.values.DatosPersonales;
 import co.com.appventas.envio.pedido.values.RepartidorId;
 import co.com.sofka.domain.generic.Entity;
 
