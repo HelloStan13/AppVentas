@@ -1,8 +1,7 @@
 package co.com.appventas.envio.orden;
 
-import co.com.appventas.envio.cliente.Contacto;
+
 import co.com.appventas.envio.cliente.values.ClienteId;
-import co.com.appventas.envio.cliente.values.ContactoId;
 import co.com.appventas.envio.orden.events.*;
 import co.com.appventas.envio.orden.values.*;
 import co.com.appventas.envio.pedido.values.PedidoId;
