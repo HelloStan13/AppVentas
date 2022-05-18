@@ -5,39 +5,39 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Objects;
 
 public class DatosPersonales implements ValueObject<DatosPersonales.Props> {
-    private final String NombreCompleto;
-    private final String Telefono;
-    private final String Correo;
+    private final String nombreCompleto;
+    private final String telefono;
+    private final String correo;
 
     public DatosPersonales(String nombreCompleto, String telefono, String correo) {
-        NombreCompleto = Objects.requireNonNull(nombreCompleto);
-        Telefono = Objects.requireNonNull(telefono);
-        Correo = Objects.requireNonNull(correo);
+        this.nombreCompleto = Objects.requireNonNull(nombreCompleto);
+        this.telefono = Objects.requireNonNull(telefono);
+        this.correo = Objects.requireNonNull(correo);
     }
 
-    @Override
+   @Override
     public Props value() {
         return new Props() {
             @Override
-            public String NombreCompleto() {
-                return NombreCompleto;
+            public String nombreCompleto() {
+                return nombreCompleto;
             }
 
             @Override
-            public String Telefono() {
-                return Telefono;
+            public String telefono() {
+                return telefono;
             }
 
             @Override
-            public String Correo() {
-                return Correo;
+            public String correo() {
+                return correo;
             }
         };
     }
 
     public interface Props{
-        String NombreCompleto();
-        String Telefono();
-        String Correo();
+        String nombreCompleto();
+        String telefono();
+        String correo();
     }
 }
