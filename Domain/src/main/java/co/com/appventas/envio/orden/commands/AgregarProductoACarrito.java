@@ -1,9 +1,9 @@
-package co.com.appventas.envio.orden.events;
+package co.com.appventas.envio.orden.commands;
 
 import co.com.appventas.envio.orden.values.*;
-import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.generic.Command;
 
-public class ProductoACarritoAgregado extends DomainEvent {
+public class AgregarProductoACarrito extends Command {
     private final OrdenId ordenId;
     private final CarritoId carritoId;
     private final Nombre nombre;
@@ -11,8 +11,7 @@ public class ProductoACarritoAgregado extends DomainEvent {
     private final PrecioProducto precioProducto;
     private final Cantidad cantidad;
 
-    public ProductoACarritoAgregado(OrdenId ordenId, CarritoId carritoId, Nombre nombre, Descripcion descripcion, PrecioProducto precioProducto, Cantidad cantidad) {
-        super("co.com.appventas.envio.ProductoACarritoAgregado");
+    public AgregarProductoACarrito(OrdenId ordenId, CarritoId carritoId, Nombre nombre, Descripcion descripcion, PrecioProducto precioProducto, Cantidad cantidad) {
         this.ordenId = ordenId;
         this.carritoId = carritoId;
         this.nombre = nombre;
