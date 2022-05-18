@@ -15,6 +15,6 @@ https://github.com/HelloStan13/AppVentas.git
 - Java / DDD / Intellij / Sofka
 
 ## Video Explicación 
-[VIDEO]()
+[VIDEO](https://www.youtube.com/watch?v=qXs3vNnomLs&ab_channel=angelamariaespinosagranada)
 
 ## con ❤️ por  Adryan Ynfante, Angela Espinosa🍿
