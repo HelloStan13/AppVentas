@@ -22,8 +22,6 @@ public class Producto extends Entity<ProductoId> {
         this.cantidad= Objects.requireNonNull(cantidad);
     }
 
-
-
     public Nombre nombre() {   return nombre;    }
     public Descripcion descripcion() {   return descripcion;    }
     public PrecioProducto precioProducto() {  return precioProducto;  }

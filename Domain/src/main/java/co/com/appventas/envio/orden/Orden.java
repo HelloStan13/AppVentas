@@ -1,18 +1,23 @@
 package co.com.appventas.envio.orden;
 
+import co.com.appventas.envio.cliente.Contacto;
 import co.com.appventas.envio.cliente.values.ClienteId;
+import co.com.appventas.envio.cliente.values.ContactoId;
 import co.com.appventas.envio.orden.events.*;
 import co.com.appventas.envio.orden.values.*;
 import co.com.appventas.envio.pedido.values.PedidoId;
 import co.com.sofka.domain.generic.AggregateEvent;
 
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 public class Orden extends AggregateEvent<OrdenId> {
     protected PedidoId pedidoId;
     protected ClienteId clienteId;
     protected CarritoId carritoId;
     protected FacturaId facturaId;
+    protected Set<Producto> productos;
     protected Precio precio;
 
     public Orden(OrdenId ordenId, Precio precio) {
@@ -65,6 +70,13 @@ public class Orden extends AggregateEvent<OrdenId> {
         Objects.requireNonNull(ordenId);
         Objects.requireNonNull(carritoId);
         appendChange( new CarritoHabilitado(ordenId,carritoId)).apply();
+    }
+
+    protected Optional<Producto> getProductoPorId(ProductoId productoId){
+        return productos
+                .stream()
+                .filter(contacto -> contacto.identity().equals(productoId))
+                .findFirst();
     }
 
 }
