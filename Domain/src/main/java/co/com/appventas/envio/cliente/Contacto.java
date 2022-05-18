@@ -13,8 +13,8 @@ public class Contacto extends Entity<ContactoId> {
     private Whatsapp whatsapp;
     private PQR pqr;
 
-    public Contacto(ContactoId entityId, Whatsapp whatsapp, PQR pqr) {
-        super(entityId);
+    public Contacto(ContactoId contactoId, Whatsapp whatsapp, PQR pqr) {
+        super(contactoId);
         this.whatsapp = whatsapp;
         this.pqr = pqr;
     }
@@ -24,10 +24,6 @@ public class Contacto extends Entity<ContactoId> {
 
     public PQR Pqr() {
         return pqr;
-    }
-
-    public void ComunicarViaWhatsapp(Whatsapp whatsapp) {
-        this.whatsapp = Objects.requireNonNull(whatsapp);
     }
 
     public void EnviarPRQ(PQR Pqr) {

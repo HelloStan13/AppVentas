@@ -20,4 +20,12 @@ public class Devolucion extends Entity<DevolucionId> {
     public void actualizarMotivo(Motivo motivo){
         this.motivo= Objects.requireNonNull(motivo);
     }
+
+    public Fecha getFecha() {
+        return fecha;
+    }
+
+    public Motivo getMotivo() {
+        return motivo;
+    }
 }
